@@ -1,0 +1,14 @@
+.Chatbot{
+    background-color: #F3F1EB;
+}
+.chat-header {
+    background-color: #93DFCA; /* Color de fondo deseado */
+    color: white
+} 
+
+.chat{
+    max-height: 850px;
+    height: 850px;
+    
+    overflow-y: auto; /* Añade una barra de desplazamiento vertical si el contenido del chat excede su altura */
+}
