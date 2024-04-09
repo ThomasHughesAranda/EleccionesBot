@@ -1,0 +1,24 @@
+.card-body{
+    background-color:#F3F1EB;
+}
+
+.chat {
+    height: 750px;
+    max-height: 750px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+
+
+@media (max-width: 576px) {
+    .chat {
+        max-height: 650px;
+    }
+}
+
+@media (max-width: 375px) {
+    .chat {
+        max-height: 450px;
+    }
+}
