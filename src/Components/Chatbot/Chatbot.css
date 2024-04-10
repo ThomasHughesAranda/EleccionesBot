@@ -3,8 +3,8 @@
 }
 
 .chat {
-    height: 750px;
-    max-height: 750px;
+    height: 800px;
+    max-height: 800px;
     overflow-y: auto;
     text-align: left;
 }
@@ -13,7 +13,7 @@
 
 @media (max-width: 576px) {
     .chat {
-        max-height: 650px;
+        max-height: 670px;
     }
 }
 

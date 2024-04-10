@@ -6,34 +6,35 @@ const NavbarOffcanvas = () => {
   const expand = false;
 
   return (
-    <Navbar expand={expand} className="bg-body-tertiary mb-3">
+    <Navbar expand={expand} className="bg-dark mb-3">
       <Container fluid>
-        <Navbar.Brand href="#">EleccionesBot</Navbar.Brand>
-        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+        <Navbar.Brand href="#" className="text-light">EleccionesBot</Navbar.Brand>
+        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} className='bg-light'/>
         <Navbar.Offcanvas
           id={`offcanvasNavbar-expand-${expand}`}
           aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
           placement="end"
         >
-          <Offcanvas.Header closeButton>
+          <Offcanvas.Header closeButton >
             <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-            EleccionesBot
+              EleccionesBot
             </Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body>
+          <Offcanvas.Body className="bg-dark">
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="#action1">Inicio</Nav.Link>
-              <Nav.Link href="#action2">¿Como funciona?</Nav.Link>
+              <Nav.Link href="#action1" className="text-light">Inicio</Nav.Link>
+              <Nav.Link href="#action2" className="text-light">¿Cómo funciona?</Nav.Link>
               <NavDropdown
                 title="Dropdown"
                 id={`offcanvasNavbarDropdown-expand-${expand}`}
+                className="text-light"
               >
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
+                <NavDropdown.Item href="#action3" className="text-light">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action4" className="text-light">
                   Another action
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
+                <NavDropdown.Item href="#action5" className="text-light">
                   Something else here
                 </NavDropdown.Item>
               </NavDropdown>
@@ -47,3 +48,4 @@ const NavbarOffcanvas = () => {
 };
 
 export default NavbarOffcanvas;
+

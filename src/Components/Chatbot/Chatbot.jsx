@@ -18,9 +18,8 @@ const Chatbot = () => {
 
     return (
         <div className="Chatbot">
-            <Container fluid="md">
+           <Container fluid="md">       
                 <Card>
-                    <Card.Header className="chat-header" style={{backgroundColor: '#93DFCA'}}>EleccionesBot </Card.Header>
                     <Card.Body className="chat">
                             <ListGroup variant="flush" >
                                 {messages.map((message, index) => (
