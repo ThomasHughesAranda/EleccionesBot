@@ -1,0 +1,141 @@
+body {
+    background: linear-gradient(180deg, #ffffff, #b4b4b4);
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  }
+  
+  header.banner {
+    color: #28a745;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  
+  header.banner .container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  header.banner .logo {
+    text-decoration: none;
+    color: #28a745;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  header.banner .navigation {
+    display: inline-block;
+  }
+  
+  header.banner .navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+  }
+  
+  header.banner .navigation ul li {
+    display: inline-block;
+    margin-right: 50px;
+    
+  }
+  
+  header.banner .navigation ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    background-color: #1e7734;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .content {
+    padding: 20px;
+    margin-top: 80px;
+  }
+  
+  .intro {
+    text-align: left;
+    position: relative;
+  }
+  
+  .intro h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #036635;
+  }
+  
+  .intro h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #036635;
+  }
+
+  .intro p {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #036635;
+    font-weight: bold;
+  }
+  
+  .intro .button {
+    background-color: #036635;
+    font-weight: bold;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 30px;
+    margin-top: auto;
+    display: block; 
+    width: fit-content; 
+    margin-left: auto; 
+    margin-right: auto; 
+  }
+
+  .containerA {
+    top: 0;
+    width: 13%;
+    margin: 50px 70px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    position: relative;
+  }
+
+  .containerCorreo {
+    top: 0;
+    width: 13%;
+    margin: 50px 70px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    position: relative;
+  }
+  
+  footer.footer {
+    color: #28a745;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  
