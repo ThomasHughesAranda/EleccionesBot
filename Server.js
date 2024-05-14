@@ -1,94 +1,122 @@
 const PORT = 8000;
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
+require('dotenv').config();
 const { OpenAI } = require('openai');
-
+const { OPENAI_API_KEY, ASSISTANT_ID } = process.env;
 const app = express();
+
 app.use(express.json());
 app.use(cors());
 
-dotenv.config();
-
+// Configuración Api de OpenAI
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
+    apiKey: OPENAI_API_KEY,
 });
 
-const obtenerAsistente = async () => {
-    try {
-        const assistant = await openai.beta.assistants.retrieve("asst_A0uu0dkrl9sIXInopXdRYQNk");
-        return assistant;
-    } catch (error) {
-        console.error("Error retrieving assistant:", error);
-        throw error;
-    }
-};
+// Llamado a Asisstente de Api de OpenAI 
+const assistantId = ASSISTANT_ID;
+let pollingInterval;
 
-//Create thread
-const crearThread = async () => {
-    try {
-        const thread = await openai.beta.threads.create();
-        return thread;
-    } catch (error) {
-        console.error('Error al crear el hilo:', error);
-        throw error;
-    }
-};
+// funcion que crea de un thread o hilo
+async function createThread() {
+    console.log('Creando un nuevo hilo...');
+    const thread = await openai.beta.threads.create();
+    return thread;
+}
+//funcion asincronica para agregar mensaje al thread
+async function addMessage(threadId, message) {
+    console.log('Agregando un nuevo mensaje al thread: ' + threadId);
+    const response = await openai.beta.threads.messages.create(
+        threadId,
+        {
+            role: "user",
+            content: message
+        }
+    );
+    return response;
+}
+//Funcion para correr el assistant
+async function runAssistant(threadId) {
+    console.log('Corriendo el asistente para el hilo: ' + threadId)
+    const response = await openai.beta.threads.runs.create(
+        threadId,
+        { 
+          assistant_id: assistantId,
+          max_prompt_tokens: 1000, // Máximo de tokens para la entrada del modelo
+          max_completion_tokens: 1000 // Máximo de tokens para la salida del modelo          
+        }
+      );
 
-//Create message
-const createMessage = async (thread) => {
-    try {
-       const message = await openai.beta.threads.messages.create(thread.id, {
-            role: 'user',
-            content: 'Quiero saber más sobre la propuesta de constitucion'
+    return response;
+}
+
+// Verificar el estado de ejecución del asistente
+async function checkingStatus(res, threadId, runId) {
+    const runObject = await openai.beta.threads.runs.retrieve(
+        threadId,
+        runId
+    );
+    const status = runObject.status;
+    console.log('Estado actual: ' + status);
+    if(status == 'completed') {
+        clearInterval(pollingInterval);
+        const messagesList = await openai.beta.threads.messages.list(threadId);
+        let messages = []
+        messagesList.body.data.forEach(message => {
+            messages.push(message.content);
         });
-        console.log(message.content[0].text);
-        console.log(message);
-    } catch (error) {
-        console.error('Error al crear el mensaje:', error);
+        res.json({ messages });
     }
-};
-
-const retrieveRun = async (run) => {
-    try {
-        let keepRetrievingRun;
-        while (run.status !== "completed") {
-            keepRetrievingRun = await openai.beta.threads.runs.retrieve(
-              run.thread_id,
-              run.id
-            );
-            console.log(`Run status: ${keepRetrievingRun.status}`);
-            if (keepRetrievingRun.status === "completed") {
-              console.log("\n");
-              break;
-            }
-          }
-    } catch (error) {
-        console.error('Error al recuperar el hilo:', error)
-        throw error;
+    else if(status === 'requires_action') {
+        console.log('Requiere acción... buscando una función')
+        if(runObject.required_action.type === 'submit_tool_outputs') {
+            console.log('submit tool outputs ... ')
+            const tool_calls = await runObject.required_action.submit_tool_outputs.tool_calls
+            const parsedArgs = JSON.parse(tool_calls[0].function.arguments);
+            console.log('Query to search for: ' + parsedArgs.query)
+            const apiResponse = await getSearchResult(parsedArgs.query)
+            const run = await openai.beta.threads.runs.submitToolOutputs(
+                threadId,
+                runId,
+                {
+                  tool_outputs: [
+                    {
+                      tool_call_id: tool_calls[0].id,
+                        output: JSON.stringify(apiResponse)
+                    },
+                  ],
+                }
+            )
+            console.log('Ejecución después de enviar los resultados de la herramienta: ' + run.status)
+        }
     }
-};
+}
 
-//Run assistant
-const runAssistant = async () => {
-    try {
-        // Crear un nuevo hilo
-        const thread = await crearThread();
-        // Obtener el objeto del asistente
-        const assistant = await obtenerAsistente();
-        // Ejecutar el asistente en el hilo creado
-        const run = await openai.beta.threads.runs.create(thread.id,{
-            assistant_id: assistant.id,
-            instructions: 'Credencial usuario',           
+//Server endpoints
+// Endpoint para crear un nuevo hilo
+app.get('/thread', (req, res) => {
+    createThread().then(thread => {
+        res.json({ threadId: thread.id });
+    });
+})
+// Endpoint para agregar un mensaje al hilo
+app.post('/message', (req, res) => {
+    const { message, threadId } = req.body;
+    addMessage(threadId, message).then(message => {
+        // res.json({ messageId: message.id });
+        // Run the assistant
+        runAssistant(threadId).then(run => {
+            const runId = run.id;           
+            // Check the status
+            pollingInterval = setInterval(() => {
+                checkingStatus(res, threadId, runId);
+            }, 5000);
         });
-        await retrieveRun(run);
-        createMessage(thread);
-    } catch (error) {
-        console.error('Error al ejecutar el asistente:', error);
-        throw error;
-    }
-};
+    });
+});
 
-runAssistant();
 
-app.listen(PORT, () => console.log('El servidor está corriendo en el puerto ' + PORT));
+app.listen(PORT, () => {
+  console.log(`El servidor está corriendo en el puerto ${PORT}`);
+});
