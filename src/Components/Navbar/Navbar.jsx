@@ -1,51 +1,31 @@
-import React from 'react';
-import { Container, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap';
+import { Navbar as BootstrapNavbar, Nav, Container } from 'react-bootstrap';
+import { useAuth0 } from '@auth0/auth0-react';
+import Login from '../Auth0/Login';
+import Logout from '../Auth0/Logout';
+import './Navbar.css'; 
 
-const NavbarOffcanvas = () => {
-  // Obtener el primer elemento de la lista
-  const expand = false;
+const Navbar = () => {
+  const { isAuthenticated } = useAuth0();
 
   return (
-    <Navbar expand={expand} className="bg-dark mb-3">
-      <Container fluid>
-        <Navbar.Brand href="#" className="text-light">EleccionesBot</Navbar.Brand>
-        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} className='bg-light'/>
-        <Navbar.Offcanvas
-          id={`offcanvasNavbar-expand-${expand}`}
-          aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-          placement="end"
-        >
-          <Offcanvas.Header closeButton >
-            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-              EleccionesBot
-            </Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body className="bg-dark">
-            <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="#action1" className="text-light">Inicio</Nav.Link>
-              <Nav.Link href="#action2" className="text-light">¿Cómo funciona?</Nav.Link>
-              <NavDropdown
-                title="Dropdown"
-                id={`offcanvasNavbarDropdown-expand-${expand}`}
-                className="text-light"
-              >
-                <NavDropdown.Item href="#action3" className="text-light">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4" className="text-light">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5" className="text-light">
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            
-          </Offcanvas.Body>
-        </Navbar.Offcanvas>
+    <BootstrapNavbar bg="light" expand="lg" className="custom-navbar">
+      <Container>
+        <BootstrapNavbar.Brand href="Inicio" className="brand">
+          EleccionesBot
+        </BootstrapNavbar.Brand>
+        <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
+        <BootstrapNavbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="¿Como-funciona?" className="nav-link">¿Como funciona?</Nav.Link>
+            <Nav.Link href="¿Quienes-somos" className="nav-link">¿Quienes somos?</Nav.Link>
+          </Nav>
+          <Nav>
+            {isAuthenticated ? <Logout /> : <Login />}
+          </Nav>
+        </BootstrapNavbar.Collapse>
       </Container>
-    </Navbar>
+    </BootstrapNavbar>
   );
 };
 
-export default NavbarOffcanvas;
-
+export default Navbar;

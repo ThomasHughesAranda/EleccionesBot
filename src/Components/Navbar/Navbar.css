@@ -1,0 +1,25 @@
+.custom-navbar {
+    border-radius: 0; /* Quita los bordes redondeados */
+    padding: 10px;
+  }
+  
+  .brand {
+    font-weight: bold;
+    color: #036635; /* Color verde */
+  }
+  
+  .nav-link {
+    color: #036635 !important; 
+    margin-right: 15px; /* Espacio entre enlaces */
+  }
+  
+  .navbar-nav .btn-primary {
+    background-color: #036635;
+    border-color: #036635;
+  }
+  
+  .navbar-nav .btn-primary:hover {
+    background-color: #036635; /* Color verde más oscuro al pasar el cursor */
+    border-color: #036635   ;
+  }
+  

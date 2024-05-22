@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Container from 'react-bootstrap/Container';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Card from 'react-bootstrap/Card';
+import { Button, Form, InputGroup, Container, ListGroup, Card } from 'react-bootstrap';
 import './Chatbot.css';
 
 const Chatbot = () => {
