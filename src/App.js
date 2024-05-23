@@ -1,5 +1,5 @@
 import './App.css';
-//import Chatbot from './Components/Chatbot/Chatbot';
+import Chatbot from './Components/Chatbot/Chatbot';
 import Navbar from './Components/Navbar/Navbar';
 //import Main from './Components/Main/Main';
 import { Auth0Provider } from '@auth0/auth0-react';
@@ -16,6 +16,7 @@ function App() {
       redirectUri={window.location.origin}
     >
       <Navbar />
+      <Chatbot />
     </Auth0Provider>
   );
 }

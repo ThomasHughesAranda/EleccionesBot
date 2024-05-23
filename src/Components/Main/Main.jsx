@@ -1,4 +1,3 @@
-import React from 'react';
 import Chatbot from '../Chatbot/Chatbot'; // Importa el componente Chatbot
 import './styleprueba.css';
 import { Container } from 'react-bootstrap';

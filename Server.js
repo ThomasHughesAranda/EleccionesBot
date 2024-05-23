@@ -24,6 +24,7 @@ async function createThread() {
     const thread = await openai.beta.threads.create();
     return thread;
 }
+
 //funcion asincronica para agregar mensaje al thread
 async function addMessage(threadId, message) {
     console.log('Agregando un nuevo mensaje al thread: ' + threadId);
@@ -36,6 +37,7 @@ async function addMessage(threadId, message) {
     );
     return response;
 }
+
 //Funcion para correr el assistant
 async function runAssistant(threadId) {
     console.log('Corriendo el asistente para el hilo: ' + threadId)
@@ -43,8 +45,6 @@ async function runAssistant(threadId) {
         threadId,
         { 
           assistant_id: assistantId,
-          max_prompt_tokens: 1000, // Máximo de tokens para la entrada del modelo
-          max_completion_tokens: 1000 // Máximo de tokens para la salida del modelo          
         }
       );
 
@@ -100,6 +100,7 @@ app.get('/thread', (req, res) => {
         res.json({ threadId: thread.id });
     });
 })
+
 // Endpoint para agregar un mensaje al hilo
 app.post('/message', (req, res) => {
     const { message, threadId } = req.body;
@@ -115,6 +116,7 @@ app.post('/message', (req, res) => {
         });
     });
 });
+
 
 
 app.listen(PORT, () => {
