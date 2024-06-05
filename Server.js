@@ -105,11 +105,10 @@ app.get('/thread', (req, res) => {
 app.post('/message', (req, res) => {
     const { message, threadId } = req.body;
     addMessage(threadId, message).then(message => {
-        // res.json({ messageId: message.id });
         // Run the assistant
         runAssistant(threadId).then(run => {
             const runId = run.id;           
-            // Check the status
+            // Estado
             pollingInterval = setInterval(() => {
                 checkingStatus(res, threadId, runId);
             }, 5000);

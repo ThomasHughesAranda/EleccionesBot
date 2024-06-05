@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, InputGroup, Container, ListGroup, Card } from 'react-bootstrap';
+import { Button, Form, InputGroup, Container, ListGroup, Card, Spinner } from 'react-bootstrap';
 import axios from 'axios';
 import './Chatbot.css';
 
 const Chatbot = () => {
     const [messages, setMessages] = useState([]);
     const [threadId, setThreadId] = useState(null);
+    const [loading, setLoading] = useState(false); 
+    const [inputDisabled, setInputDisabled] = useState(false); 
 
-    // Obtener el thread al montar el componente
+    // Obtener el thread al iniciar el chatbot
     useEffect(() => {
         axios.get('http://localhost:8000/thread')
             .then(response => {
@@ -20,19 +22,22 @@ const Chatbot = () => {
 
     const handleMessageSend = () => {
         const newMessage = document.getElementById("message-input").value;
-
         if (!newMessage || !threadId) return;
 
         // Agregar el mensaje del usuario a la lista de mensajes
         setMessages([...messages, { role: 'user', content: newMessage }]);
         document.getElementById("message-input").value = '';
 
-        // Enviar el mensaje al backend
+        // Carga de respuesta del servidor 
+        setLoading(true);
+        setInputDisabled(true);
+
+
+        // Envia el mensaje al backend
         axios.post('http://localhost:8000/message', { message: newMessage, threadId })
             .then(response => {
-                // Asegúrate de que la respuesta contiene un array de mensajes
                 if (Array.isArray(response.data.messages)) {
-                    const assistantMessages = response.data.messages.flat().map(msg => ({
+                    const assistantMessages = response.data.messages[0].flat().map(msg => ({
                         role: 'assistant',
                         content: msg.type === 'text' ? msg.text.value : 'Mensaje no reconocido'
                     }));
@@ -43,7 +48,19 @@ const Chatbot = () => {
             })
             .catch(error => {
                 console.error("Error al enviar el mensaje:", error);
+            })
+            .finally(() => {
+                // Spinner y inputdisabled desaparecen si hay respuesta o error
+                setLoading(false);
+                setInputDisabled(false);
+
             });
+    };  
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            handleMessageSend();
+        }
     };
 
     return (
@@ -64,9 +81,22 @@ const Chatbot = () => {
                             <Form.Control
                                 id="message-input"
                                 placeholder="Escriba su consulta aquí..."
+                                onKeyPress={handleKeyPress}
+                                disabled={inputDisabled}
                             />
-                            <Button variant="dark" id="button-addon2" onClick={handleMessageSend}>
-                                Enviar
+                            <Button variant="dark" id="button-addon2" onClick={handleMessageSend} disabled={inputDisabled}>
+                                {loading ? ( // Muestra Spinner mientras carga el mensaje del asistente
+                                    <Spinner
+                                        as="span"
+                                        animation="border"
+                                        size="sm"
+                                        role="status"
+                                        aria-hidden="true"
+                                        style={{ marginRight: '5px' }}
+                                    />
+                                ) : (
+                                    'Enviar'
+                                )}
                             </Button>
                         </InputGroup>
                     </Card.Footer>
