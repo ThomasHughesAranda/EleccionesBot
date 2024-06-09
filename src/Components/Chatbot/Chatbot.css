@@ -22,3 +22,16 @@
         max-height: 450px;
     }
 }
+/* Color de fondo para mensajes de usuario */
+.Chatbot .chat .list-group-item.user {
+    background-color: #F3F1EB; 
+}
+/* Color de fondo para mensajes de asistente */
+.Chatbot .chat .list-group-item.assistant {
+    background-color: #E0E0E0; 
+}
+/* Color rol del chat */
+.Chatbot .chat .list-group-item strong {
+    color: green;
+    font-weight: bold;
+}

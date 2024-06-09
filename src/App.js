@@ -1,25 +1,24 @@
 import './App.css';
+import { BrowserRouter,  Route, Routes  } from 'react-router-dom';
 import Chatbot from './Components/Chatbot/Chatbot';
 import Navbar from './Components/Navbar/Navbar';
-//import Main from './Components/Main/Main';
-import { Auth0Provider } from '@auth0/auth0-react';
-//import LandingPage from './Components/LandingPage/LandingPage';
-
-const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
+import Main from './Components/Main/Main';
+import ProtectedRoutes  from './Components/Auth0/ProtectedRoutes';
 
 function App() {
   return (
-    <Auth0Provider 
-      domain={domain}
-      clientId={clientId}
-      redirectUri={window.location.origin}
-    >
-      <Navbar />
-      <Chatbot />
-    </Auth0Provider>
+      <BrowserRouter>
+      <Navbar/>
+        <Routes>
+          <Route path="/" element={
+            <ProtectedRoutes>
+              <Chatbot/>
+            </ProtectedRoutes>
+          }/> 
+            <Route path="/Inicio" element= {<Main/>} />      
+        </Routes>
+      </BrowserRouter>
   );
 }
 
 export default App;
-

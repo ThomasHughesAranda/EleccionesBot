@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form, InputGroup, Container, ListGroup, Card, Spinner } from 'react-bootstrap';
 import axios from 'axios';
 import './Chatbot.css';
-
 const Chatbot = () => {
-    const [messages, setMessages] = useState([]);
+    
+    const [messages, setMessages] = useState([
+        { role: 'assistant', content: '¡Hola! Bienvenido a este espacio de información sobre el Plebiscito Constitucional en Chile. Estoy aquí para ayudarte a resolver tus dudas sobre la actual constitución y la propuesta de nueva constitución, así como sobre el proceso del plebiscito constitucional 2023.  ¿En qué puedo ayudarte hoy?' }
+    ]);
     const [threadId, setThreadId] = useState(null);
     const [loading, setLoading] = useState(false); 
-    const [inputDisabled, setInputDisabled] = useState(false); 
+    const [inputDisabled, setInputDisabled] = useState(false);
 
     // Obtener el thread al iniciar el chatbot
     useEffect(() => {
@@ -18,9 +20,11 @@ const Chatbot = () => {
             .catch(error => {
                 console.error("Error al crear el hilo:", error);
             });
-    }, []);
+    }, []);  ;
+    
 
     const handleMessageSend = () => {
+
         const newMessage = document.getElementById("message-input").value;
         if (!newMessage || !threadId) return;
 
@@ -50,7 +54,7 @@ const Chatbot = () => {
                 console.error("Error al enviar el mensaje:", error);
             })
             .finally(() => {
-                // Spinner y inputdisabled desaparecen si hay respuesta o error
+                // Spinner y input disabled desaparecen si hay respuesta o error
                 setLoading(false);
                 setInputDisabled(false);
 
@@ -68,13 +72,13 @@ const Chatbot = () => {
             <Container fluid="md">
                 <Card>
                     <Card.Body className="chat">
-                        <ListGroup variant="flush">
-                            {messages.map((message, index) => (
-                                <ListGroup.Item key={index} style={{ backgroundColor: message.role === 'user' ? '#F3F1EB' : '#E0E0E0' }}>
-                                    {message.content}
-                                </ListGroup.Item>
-                            ))}
-                        </ListGroup>
+                    <ListGroup variant="flush">
+                        {messages.map((message, index) => (
+                            <ListGroup.Item key={index} className={`list-group-item ${message.role}`}>
+                            <strong>{message.role === 'user' ? 'Usuario:' : 'Asistente:'}</strong> {message.content}
+                            </ListGroup.Item>
+                        ))}
+                    </ListGroup>
                     </Card.Body>
                     <Card.Footer style={{ backgroundColor: '#F3F1EB' }}>
                         <InputGroup className="mb-3">
@@ -102,6 +106,7 @@ const Chatbot = () => {
                     </Card.Footer>
                 </Card>
             </Container>
+            
         </div>
     );
 };
