@@ -5,6 +5,7 @@ require('dotenv').config();
 const { OpenAI } = require('openai');
 const { OPENAI_API_KEY, ASSISTANT_ID } = process.env;
 const app = express();
+const pool = require('./db');
 
 app.use(express.json());
 app.use(cors());
@@ -59,7 +60,7 @@ async function checkingStatus(res, threadId, runId) {
     );
     const status = runObject.status;
     console.log('Estado actual: ' + status);
-    if(status == 'completed') {
+    if(status === 'completed') {
         clearInterval(pollingInterval);
         const messagesList = await openai.beta.threads.messages.list(threadId);
         let messages = []
@@ -91,7 +92,12 @@ async function checkingStatus(res, threadId, runId) {
             console.log('Ejecución después de enviar los resultados de la herramienta: ' + run.status)
         }
     }
+
+
 }
+
+
+
 
 //Server endpoints
 // Endpoint para crear un nuevo hilo
@@ -114,9 +120,14 @@ app.post('/message', (req, res) => {
             }, 5000);
         });
     });
+    pool.query('INSERT INTO messages (message) VALUES($1)', [message], (err, result) => {
+        if (err) {
+            console.error('Error al insertar el mensaje en la base de datos:', err);
+        } else {
+            console.log('Mensaje insertado en la base de datos');
+        }
+    });
 });
-
-
 
 app.listen(PORT, () => {
   console.log(`El servidor está corriendo en el puerto ${PORT}`);

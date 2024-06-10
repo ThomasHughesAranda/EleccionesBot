@@ -4,6 +4,7 @@ import Chatbot from './Components/Chatbot/Chatbot';
 import Navbar from './Components/Navbar/Navbar';
 import Main from './Components/Main/Main';
 import ProtectedRoutes  from './Components/Auth0/ProtectedRoutes';
+import ComoFunciona from './Components/Como-funciona/Como-funciona';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             </ProtectedRoutes>
           }/> 
             <Route path="/Inicio" element= {<Main/>} />      
+            <Route path="/¿Como-funciona?" element= {<ComoFunciona/>} />   
         </Routes>
       </BrowserRouter>
   );

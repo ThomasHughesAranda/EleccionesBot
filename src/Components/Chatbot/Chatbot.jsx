@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form, InputGroup, Container, ListGroup, Card, Spinner } from 'react-bootstrap';
 import axios from 'axios';
 import './Chatbot.css';
+
+
 const Chatbot = () => {
-    
+
     const [messages, setMessages] = useState([
         { role: 'assistant', content: '¡Hola! Bienvenido a este espacio de información sobre el Plebiscito Constitucional en Chile. Estoy aquí para ayudarte a resolver tus dudas sobre la actual constitución y la propuesta de nueva constitución, así como sobre el proceso del plebiscito constitucional 2023.  ¿En qué puedo ayudarte hoy?' }
     ]);
@@ -45,6 +47,7 @@ const Chatbot = () => {
                         role: 'assistant',
                         content: msg.type === 'text' ? msg.text.value : 'Mensaje no reconocido'
                     }));
+                
                     setMessages(prevMessages => [...prevMessages, ...assistantMessages]);
                 } else {
                     console.error("Respuesta inesperada:", response.data);
@@ -72,13 +75,13 @@ const Chatbot = () => {
             <Container fluid="md">
                 <Card>
                     <Card.Body className="chat">
-                    <ListGroup variant="flush">
-                        {messages.map((message, index) => (
-                            <ListGroup.Item key={index} className={`list-group-item ${message.role}`}>
-                            <strong>{message.role === 'user' ? 'Usuario:' : 'Asistente:'}</strong> {message.content}
-                            </ListGroup.Item>
-                        ))}
-                    </ListGroup>
+                        <ListGroup variant="flush">
+                            {messages.map((message, index) => (
+                                <ListGroup.Item key={index} className={`list-group-item ${message.role}`}>
+                                    <strong>{message.role === 'user' ? 'Usuario:' : 'Asistente:'}</strong> {message.content}
+                                </ListGroup.Item>
+                            ))}
+                        </ListGroup>
                     </Card.Body>
                     <Card.Footer style={{ backgroundColor: '#F3F1EB' }}>
                         <InputGroup className="mb-3">
