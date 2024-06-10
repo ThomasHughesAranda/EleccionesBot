@@ -8,7 +8,7 @@ import ProtectedRoutes  from './Components/Auth0/ProtectedRoutes';
 function App() {
   return (
       <BrowserRouter>
-      <Navbar/>
+        <Navbar/>
         <Routes>
           <Route path="/" element={
             <ProtectedRoutes>
