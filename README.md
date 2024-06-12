@@ -63,7 +63,11 @@ Es una aplicación diseñada para facilitar el acceso de información sobre proc
     DB_PORT=
 
 5. Ejecuta la aplicación:
+   
 npm run start:frontend
+
 npm run start:backend
+
 npm run build
+
 npm test
