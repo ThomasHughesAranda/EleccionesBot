@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const { OpenAI } = require('openai');
-const { OPENAI_API_KEY, ASSISTANT_ID } = process.env;
+const { OPENAI_API_KEY, ASSISTANT_ID,RECT_APP_AUTH0_ADMIN_USER_ID } = process.env;
 const app = express();
 const pool = require('./db');
 
@@ -167,15 +167,12 @@ app.get('/messagesUsers', async (req, res) => {
 
 app.get('/admin/:id', (req, res) => {
     const id = req.params.id;
-    if (id === "google-oauth2|117244683901502186777") {
+    if (id === RECT_APP_AUTH0_ADMIN_USER_ID) {
         res.json({ autorizado: true });
     } else {
         res.json({ autorizado: false });
     }
 });
-
-
-
 
 
 app.listen(PORT, () => {
