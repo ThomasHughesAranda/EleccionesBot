@@ -96,6 +96,9 @@ async function checkingStatus(res, threadId, runId) {
 
 }
 //Server endpoints
+
+
+// Endpoint OpenAI
 // Endpoint para crear un nuevo hilo
 app.get('/thread', (req, res) => {
     createThread().then(thread => {
@@ -118,6 +121,8 @@ app.post('/message', (req, res) => {
     });
 });
 
+// Endpoint Base de Datos
+//Endpoint registrar usuario a tabla Users
 app.post('/users', async (req, res) => {
     const { email, name } = req.body;
     try {
@@ -131,7 +136,7 @@ app.post('/users', async (req, res) => {
         res.status(500).send('Error al insertar datos a la tabla usuarios');
     }
 });
-
+//Endpoint ingresar mensaje a tabla Messages
 app.post('/messagesUsers', async (req, res) => {
     const { messageUser, emailUser } = req.body;
     try {
@@ -145,6 +150,32 @@ app.post('/messagesUsers', async (req, res) => {
         res.status(500).send('Error al insertar datos a la tabla messages');
     }
 });  
+//Endpoint obtener mensajes de tabla Messages
+app.get('/messagesUsers', async (req, res) => {
+    try {
+        const query = 'SELECT * FROM Messages';
+        const response = await pool.query(query);
+        res.status(200).json({
+            message: 'Datos obtenidos correctamente de la tabla messages',
+            data: response.rows
+        });
+    } catch (error) {
+        console.error('Error al obtener datos:', error);
+        res.status(500).send('Error al obtener datos de la tabla messages');
+    }
+});
+
+app.get('/admin/:id', (req, res) => {
+    const id = req.params.id;
+    if (id === "google-oauth2|117244683901502186777") {
+        res.json({ autorizado: true });
+    } else {
+        res.json({ autorizado: false });
+    }
+});
+
+
+
 
 
 app.listen(PORT, () => {

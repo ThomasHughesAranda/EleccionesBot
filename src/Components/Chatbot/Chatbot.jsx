@@ -15,6 +15,7 @@ const Chatbot = () => {
     const [inputDisabled, setInputDisabled] = useState(false);
     const { user } = useAuth0();
 
+
     const registrarNuevoUsuario = async () => {
         try {
             // Realiza la solicitud POST al endpoint '/users' con los datos del usuario
@@ -38,8 +39,8 @@ const Chatbot = () => {
             console.error('Error al registrar mensaje del usuario:', error.message);
         }
     };
-    registrarNuevoUsuario();
 
+    registrarNuevoUsuario();
     // Obtener el thread al iniciar el chatbot
     useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
