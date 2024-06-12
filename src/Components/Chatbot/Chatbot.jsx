@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form, InputGroup, Container, ListGroup, Card, Spinner } from 'react-bootstrap';
 import axios from 'axios';
 import './Chatbot.css';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 const Chatbot = () => {
@@ -12,9 +13,36 @@ const Chatbot = () => {
     const [threadId, setThreadId] = useState(null);
     const [loading, setLoading] = useState(false); 
     const [inputDisabled, setInputDisabled] = useState(false);
+    const { user } = useAuth0();
+
+    const registrarNuevoUsuario = async () => {
+        try {
+            // Realiza la solicitud POST al endpoint '/users' con los datos del usuario
+            const name = user.name;
+            const email = user.email;
+            await axios.post('http://localhost:8000/users', { name, email });
+            console.log('Usuario registrado correctamente');
+        } catch (error) {
+            // Maneja los errores de la solicitud
+            console.error('Error al registrar nuevo usuario:', error.message);
+        }
+    };
+    const registrarMessageUser = async (messageUser) => {
+        try {
+            // Realiza la solicitud POST al endpoint '/messagesUsers' con los datos del mensaje y el email del usuario
+            const emailUser = user.email;
+            await axios.post('http://localhost:8000/messagesUsers', { messageUser, emailUser });
+            console.log('Mensaje del usuario registrado correctamente');
+        } catch (error) {
+            // Maneja los errores de la solicitud
+            console.error('Error al registrar mensaje del usuario:', error.message);
+        }
+    };
+    registrarNuevoUsuario();
 
     // Obtener el thread al iniciar el chatbot
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         axios.get('http://localhost:8000/thread')
             .then(response => {
                 setThreadId(response.data.threadId);
@@ -26,7 +54,6 @@ const Chatbot = () => {
     
 
     const handleMessageSend = () => {
-
         const newMessage = document.getElementById("message-input").value;
         if (!newMessage || !threadId) return;
 
@@ -38,7 +65,6 @@ const Chatbot = () => {
         setLoading(true);
         setInputDisabled(true);
 
-
         // Envia el mensaje al backend
         axios.post('http://localhost:8000/message', { message: newMessage, threadId })
             .then(response => {
@@ -47,7 +73,7 @@ const Chatbot = () => {
                         role: 'assistant',
                         content: msg.type === 'text' ? msg.text.value : 'Mensaje no reconocido'
                     }));
-                
+                    registrarMessageUser(newMessage);
                     setMessages(prevMessages => [...prevMessages, ...assistantMessages]);
                 } else {
                     console.error("Respuesta inesperada:", response.data);
@@ -60,7 +86,6 @@ const Chatbot = () => {
                 // Spinner y input disabled desaparecen si hay respuesta o error
                 setLoading(false);
                 setInputDisabled(false);
-
             });
     };  
 

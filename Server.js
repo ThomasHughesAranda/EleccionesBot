@@ -95,10 +95,6 @@ async function checkingStatus(res, threadId, runId) {
 
 
 }
-
-
-
-
 //Server endpoints
 // Endpoint para crear un nuevo hilo
 app.get('/thread', (req, res) => {
@@ -120,14 +116,36 @@ app.post('/message', (req, res) => {
             }, 5000);
         });
     });
-    pool.query('INSERT INTO messages (message) VALUES($1)', [message], (err, result) => {
-        if (err) {
-            console.error('Error al insertar el mensaje en la base de datos:', err);
-        } else {
-            console.log('Mensaje insertado en la base de datos');
-        }
-    });
 });
+
+app.post('/users', async (req, res) => {
+    const { email, name } = req.body;
+    try {
+        const query = 'INSERT INTO Users (email,name) VALUES ($1, $2) ON CONFLICT (email) DO NOTHING';
+        const values = [email, name];
+        // Usa el pool para hacer el query
+        await pool.query(query, values);
+        res.status(201).send('Datos insertados correctamente a la tabla usuarios');
+    } catch (error) {
+        console.error('Error al insertar datos:', error);
+        res.status(500).send('Error al insertar datos a la tabla usuarios');
+    }
+});
+
+app.post('/messagesUsers', async (req, res) => {
+    const { messageUser, emailUser } = req.body;
+    try {
+        const query = 'INSERT INTO Messages (messageUser, emailUser) VALUES ($1, $2)';
+        const values = [messageUser, emailUser];
+        // Usa el pool para hacer el query
+        await pool.query(query, values);
+        res.status(201).send('Datos insertados correctamente a la tabla messages');
+    } catch (error) {
+        console.error('Error al insertar datos:', error);
+        res.status(500).send('Error al insertar datos a la tabla messages');
+    }
+});  
+
 
 app.listen(PORT, () => {
   console.log(`El servidor está corriendo en el puerto ${PORT}`);
