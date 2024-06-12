@@ -40,7 +40,9 @@ Es una aplicación diseñada para facilitar el acceso de información sobre proc
   - Crea una cuenta en Auth0 para la autenticación.
   - Configura una aplicación en Auth0 y obtén las credenciales necesarias (client ID, domain).
   - En el archivo `.env`, añade las credenciales de Auth0:
+    
     REACT_APP_AUTH0_DOMAIN=
+    
     REACT_APP_AUTH0_CLIENT_ID=
 
 - Base de Datos PostgreSQL:
@@ -48,10 +50,16 @@ Es una aplicación diseñada para facilitar el acceso de información sobre proc
   - Crea una base de datos para el proyecto.
   - Crea las tablas del proyecto con el script eleccionesBotBd.JS que esta en la carpeta del proyecto
   - Añade las credenciales de la base de datos en el archivo `.env`:
+
+
     DB_USER=
+    
     DB_PASSWORD=
+    
     DB_NAME=
+    
     DB_HOST=
+    
     DB_PORT=
 
 5. Ejecuta la aplicación:
