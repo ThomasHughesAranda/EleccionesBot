@@ -23,11 +23,11 @@ Es una aplicación diseñada para facilitar el acceso de información sobre proc
 - Web Vitals para medir el rendimiento web
 
 ## Instalación
-1.Clona este repositorio con el comando "git clone https://github.com/ThomasHughesAranda/EleccionesBot" 
+1. Clona este repositorio con el comando "git clone https://github.com/ThomasHughesAranda/EleccionesBot" 
 
-2.Navega hasta la carpeta del proyecto.
+2. Navega hasta la carpeta del proyecto.
 
-3.Ejecuta "npm install" para instalar todas las dependencias necesarias.
+3. Ejecuta "npm install" para instalar todas las dependencias necesarias.
 
 4. Configuración de Credenciales y Variables de Entorno:**
 - OpenAI API:
