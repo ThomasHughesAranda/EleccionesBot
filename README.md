@@ -1,6 +1,27 @@
 # EleccionesBot
 EleccionesBot es una aplicación para facilitar el acceso y la participación en procesos electorales mediante un bot.
 
+## Integrantes
+- Thomas Alonso Hughes Aranda
+- Sebastian Alexis Bahamondes Astorga
+
+## Tecnologías Utilizadas
+- React.js
+- React Router
+- React Bootstrap
+- Axios
+- Express.js
+- PostgreSQL
+- Auth0 para autenticación
+- Jest y Testing Library para pruebas
+- dotenv para la gestión de variables de entorno
+- nodemon para el reinicio automático del servidor en desarrollo
+- CORS para permitir solicitudes desde diferentes dominios
+- OpenAI para integración de funcionalidades de inteligencia artificial
+- Bootstrap para estilos
+- npm como gestor de paquetes
+- Web Vitals para medir el rendimiento web
+
 Instalación
 Clona este repositorio con el comando gi
 
