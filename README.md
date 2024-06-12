@@ -1,5 +1,5 @@
 # EleccionesBot
-EleccionesBot es una aplicación para facilitar el acceso y la participación en procesos electorales mediante un bot.
+Es una aplicación diseñada para facilitar el acceso de información sobre procesos electorales mediante el uso de un bot.
 
 ## Integrantes
 - Thomas Alonso Hughes Aranda
