@@ -24,8 +24,11 @@ EleccionesBot es una aplicación para facilitar el acceso y la participación en
 
 ## Instalación
 1.Clona este repositorio con el comando "git clone https://github.com/ThomasHughesAranda/EleccionesBot" 
+
 2.Navega hasta la carpeta del proyecto.
+
 3.Ejecuta "npm install" para instalar todas las dependencias necesarias.
+
 4. **Configuración de Credenciales y Variables de Entorno:**
 - **OpenAI API:** 
   - Crea una cuenta en OpenAI y obtén las credenciales de API necesarias.
