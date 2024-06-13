@@ -1,0 +1,64 @@
+.titulo {
+    color: #036635;
+}
+
+.imagenInicio{
+    width: 340px;
+    height: 340px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.contenidoInicio {
+    background-image: linear-gradient(to bottom, #ffffff, #B4B4B4); /* Gradiente de color de #ffffff a #B4B4B4 */
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+}
+.contenidoInicio p{
+    margin-top:20px;
+}
+.contenidoChatbot h1{
+    margin-top:20px;
+} 
+.contenidoChatbot p{
+    margin-top:20px;
+} 
+
+.contenidoChatbot {
+    background-color: #93DFCA; /* Color sólido */
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+.imagenChatbot{
+    margin-bottom: 50px;
+}
+
+.chatbotTitulo {
+    color: #036635;
+}
+.footer {
+    margin-top: 30px; /* Margen superior */
+    background-color: #036635; /* Color de fondo */
+    min-height: 70vh;
+    border-radius: 50px; /* Borde redondeado */
+    color: white;
+  }
+  
+  .footer h3{ 
+    margin-top: 50px; /* Margen superior para el título */
+  }
+  .footer p {
+    margin-top: 5px; /* Margen superior para los párrafos */
+    color: white;
+  }
+  .footer-link {
+    color: white;
+ 
+  }
+  .footer h4{
+    margin-top: 20px;
+    margin-botom :5px;
+  }
+  

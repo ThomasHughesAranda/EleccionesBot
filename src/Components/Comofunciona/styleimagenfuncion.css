@@ -1,25 +1,21 @@
-.loginpagina {
-    width: 250px; /* Ajusta el tamaño de la imagen según sea necesario */
-    height: 500px;
-    margin-top: 20px; /* Espacio desde arriba */
+.imgMockup {
+  width: 100%;
+  height: auto;
+  max-width: 340px;
+  max-height: 340px;
+  border-radius: 30px;
+}
+
+@media (min-width: 768px) {
+  .imgMockup {
+    max-width: 480px;
+    max-height: 480px;
   }
-  
-  /* Media Queries */
-  @media (max-width: 768px) {
-    .loginpagina {
-      width: 200px; /* Reducir el tamaño de la imagen en pantallas más pequeñas */
-      height: 200px;
-      margin-top: 15px; /* Ajustar el espacio desde arriba */
-    }
+}
+
+@media (min-width: 1024px) {
+  .imgMockup {
+    max-width: 640px;
+    max-height: 640px;
   }
-  
-  @media (max-width: 480px) {
-    .loginpagina {
-      width: 150px; /* Reducir aún más el tamaño de la imagen en pantallas muy pequeñas */
-      height: 150px;
-      margin-top: 10px; /* Ajustar el espacio desde arriba */
-    }
-  }
-  
-  
-  
+}

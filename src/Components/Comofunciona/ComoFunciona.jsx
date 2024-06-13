@@ -26,10 +26,14 @@ const ComoFuncionaPasoAPaso = () => {
           <p className="lead"> - Te aparecera el Inicio de sesion en la imagen que puede apreciar. </p>
           <p className="lead"> - Tiene la facilidad de iniciar con su Cuenta Google para tener acceso mas rapido a nuestro Chat.</p>
           <p className="lead"> - Aqui puede apreciar un ejemplo de nuestro ChatBot.</p>
-          <img src="/Fotos/demostracionChatbot.png" alt="" className="ejemplochat" />
+  
         </Col>
         <Col md={6} className="text-center order-md-2 order-1"> {/* Columna para la imagen */}
-          <img src="/Fotos/loginpagina.png" alt="" className="loginpagina" />
+        <img 
+          src="/Imagenes/Mockup.png" 
+          alt="Mockup" 
+          className='imgMockup'
+        />
         </Col>
       </Row>
     </Container>
