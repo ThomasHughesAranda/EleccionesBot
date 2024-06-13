@@ -38,7 +38,7 @@ web-vitals
 - OpenAI API:
   - Crea una cuenta en OpenAI y obtén las credenciales de API necesarias.
   - Crea un archivo `.env` en la raíz del proyecto y añade las credenciales de OpenAI:
-  - 
+  
     OPENAI_API_KEY=
     
     ASSISTANT_ID=
@@ -69,7 +69,7 @@ web-vitals
     DB_PORT=
 
 5. Ejecuta la aplicación:
- - Inicio del Frontend: "npm run start:frontend"
- - Inicio del Backend: "npm run start:backend"
- - Construcción de la Aplicación: "npm run build"
- - Ejecución de Pruebas: "npm test"
+  - Inicio del Frontend: "npm run start:frontend"
+  - Inicio del Backend: "npm run start:backend"
+  - Construcción de la Aplicación: "npm run build"
+  - Ejecución de Pruebas: "npm test"
