@@ -1,0 +1,57 @@
+.ComoFuncionachatbot .container { 
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px; /* Agregar padding para que el contenido no toque los bordes */
+}
+
+.ComoFuncionachatbot .row { 
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas más pequeñas */
+}
+
+.ComoFuncionachatbot .col { 
+  text-align: right;
+  flex: 1; /* Permitir que las columnas ocupen el ancho completo en pantallas pequeñas */
+}
+
+.ComoFuncionachatbot h2 { 
+  margin-bottom: 20px;
+  font-size: 24px; 
+}
+
+.ComoFuncionachatbot p { 
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .ComoFuncionachatbot .row {
+    justify-content: center; /* Centrar contenido en pantallas más pequeñas */
+  }
+
+  .ComoFuncionachatbot .col {
+    text-align: center; /* Centrar texto en pantallas más pequeñas */
+    margin-bottom: 20px; /* Agregar espacio entre las columnas en pantallas pequeñas */
+  }
+
+  .ComoFuncionachatbot h2 {
+    font-size: 20px; /* Reducir el tamaño de la fuente del título en pantallas más pequeñas */
+  }
+
+  .ComoFuncionachatbot p {
+    font-size: 16px; /* Reducir el tamaño de la fuente del párrafo en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .ComoFuncionachatbot h2 {
+    font-size: 18px; /* Reducir aún más el tamaño de la fuente del título en pantallas muy pequeñas */
+  }
+
+  .ComoFuncionachatbot p {
+    font-size: 14px; /* Reducir aún más el tamaño de la fuente del párrafo en pantallas muy pequeñas */
+  }
+}
+

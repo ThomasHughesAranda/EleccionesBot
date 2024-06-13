@@ -1,0 +1,27 @@
+.ejemplochat {
+    width: 150px; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: 500px;
+    position: absolute; /* Cambia a posición absoluta */
+    bottom: 20px; /* Ajusta la distancia desde la parte inferior */
+    left: 20px; /* Ajusta la distancia desde el lado izquierdo */
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .ejemplochat {
+      width: 200px; /* Reducir el tamaño de la imagen en pantallas más pequeñas */
+      height: 200px;
+      bottom: 15px; /* Ajustar la distancia desde la parte inferior */
+      left: 15px; /* Ajustar la distancia desde el lado izquierdo */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .ejemplochat {
+      width: 150px; /* Reducir aún más el tamaño de la imagen en pantallas muy pequeñas */
+      height: 150px;
+      bottom: 10px; /* Ajustar la distancia desde la parte inferior */
+      left: 10px; /* Ajustar la distancia desde el lado izquierdo */
+    }
+  }
+  

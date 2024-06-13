@@ -1,0 +1,46 @@
+.ComoFuncionaPasoAPaso .container { 
+    max-width: 100%;
+    margin: 0;
+    padding-left: 20px;
+    padding-right: 20px; /* Agregar padding a la derecha también */
+  }
+  
+  .ComoFuncionaPasoAPaso .row { 
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas más pequeñas */
+  }
+  
+  .ComoFuncionaPasoAPaso .col { 
+    text-align: left;
+    flex: 1; /* Permitir que las columnas ocupen el ancho completo en pantallas pequeñas */
+    padding: 10px; /* Agregar padding para separar las columnas */
+  }
+  
+  .ComoFuncionaPasoAPaso h2 { 
+    margin-bottom: 20px;
+    font-size: 24px; 
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .ComoFuncionaPasoAPaso .row {
+      justify-content: center; /* Centrar contenido en pantallas más pequeñas */
+    }
+  
+    .ComoFuncionaPasoAPaso .col {
+      text-align: center; /* Centrar texto en pantallas más pequeñas */
+      margin-bottom: 20px; /* Agregar espacio entre las columnas en pantallas pequeñas */
+    }
+  
+    .ComoFuncionaPasoAPaso h2 {
+      font-size: 20px; /* Reducir el tamaño de la fuente del título en pantallas más pequeñas */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .ComoFuncionaPasoAPaso h2 {
+      font-size: 18px; /* Reducir aún más el tamaño de la fuente del título en pantallas muy pequeñas */
+    }
+  }
+  

@@ -4,7 +4,7 @@ import Chatbot from './Components/Chatbot/Chatbot';
 import Navbar from './Components/Navbar/Navbar';
 import Main from './Components/Main/Main';
 import ProtectedRoutes  from './Components/Auth0/ProtectedRoutes';
-import ComoFunciona from './Components/Como-funciona/Como-funciona';
+import ComoFunciona from './Components/Comofunciona/ComoFunciona';
 import Admin from './Components/Admin/Admin';
 import AdminProtectedRoutes from './Components/Auth0/AdminProtectedRoutes';
 function App() {
@@ -22,9 +22,11 @@ function App() {
               <Admin/>
            </AdminProtectedRoutes>
           }/>
-          <Route path="/Inicio" element= {<Main/>} />      
+          <Route path="/Inicio" element= {<Main/>} />
+          
           <Route path="/¿Como-funciona?" element= {<ComoFunciona/>} />  
         </Routes>
+        <ComoFunciona/> 
       </BrowserRouter>
   );
 }
