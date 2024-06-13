@@ -70,10 +70,10 @@ web-vitals
 
 5. Ejecuta la aplicación:
    
-npm run start:frontend
+-Inicio del Frontend: "npm run start:frontend"
 
-npm run start:backend
+-Inicio del Backend: "npm run start:backend"
 
-npm run build
+-Construcción de la Aplicación: "npm run build"
 
-npm test
+-Ejecución de Pruebas: "npm test"
