@@ -33,7 +33,9 @@ Es una aplicación diseñada para facilitar el acceso de información sobre proc
 - OpenAI API:
   - Crea una cuenta en OpenAI y obtén las credenciales de API necesarias.
   - Crea un archivo `.env` en la raíz del proyecto y añade las credenciales de OpenAI:
+  - 
     OPENAI_API_KEY=
+    
     ASSISTANT_ID=
 
 - Auth0:
@@ -47,8 +49,7 @@ Es una aplicación diseñada para facilitar el acceso de información sobre proc
 
 - Base de Datos PostgreSQL:
   - Asegúrate de tener PostgreSQL instalado y configurado en tu máquina o servidor.
-  - Crea una base de datos para el proyecto.
-  - Crea las tablas del proyecto con el script eleccionesBotBd.JS que esta en la carpeta del proyecto
+  - Crea las base de datos con el script eleccionesBotBd.JS que esta en la carpeta del proyecto
   - Añade las credenciales de la base de datos en el archivo `.env`:
 
 
