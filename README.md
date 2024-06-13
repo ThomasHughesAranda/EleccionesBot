@@ -1,26 +1,31 @@
 # EleccionesBot
-Es una aplicación diseñada para facilitar el acceso de información sobre procesos electorales mediante el uso de un bot.
+EleccionesBot es una aplicación diseñada como proyecto de título de la carrera de Ingeniería Ejecución en Informática de la Pontificia Universidad Católica de Valparaíso. Su propósito es proporcionar acceso fácil a información sobre procesos electorales mediante el uso de un bot. Utiliza la tecnologia de modelo de lenguaje grande basados en inteligencia artificial de OpenAI.
 
 ## Integrantes
 - Thomas Alonso Hughes Aranda
 - Sebastian Alexis Bahamondes Astorga
-
-## Tecnologías Utilizadas
-- React.js
-- React Router
-- React Bootstrap
-- Axios
-- Express.js
-- PostgreSQL
-- Auth0 para autenticación
-- Jest y Testing Library para pruebas
-- dotenv para la gestión de variables de entorno
-- nodemon para el reinicio automático del servidor en desarrollo
-- CORS para permitir solicitudes desde diferentes dominios
-- OpenAI para integración de funcionalidades de inteligencia artificial
-- Bootstrap para estilos
-- npm como gestor de paquetes
-- Web Vitals para medir el rendimiento web
+ 
+## Dependencias 
+@auth0/auth0-react
+@testing-library/jest-dom
+@testing-library/react
+@testing-library/user-event
+axios
+bootstrap
+cors
+dotenv
+express
+install
+nodemon
+npm
+openai
+pg
+react
+react-bootstrap
+react-data-table-component
+react-dom
+react-router-dom
+web-vitals
 
 ## Instalación
 1. Clona este repositorio con el comando "git clone https://github.com/ThomasHughesAranda/EleccionesBot" 
