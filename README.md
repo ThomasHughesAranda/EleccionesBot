@@ -69,11 +69,7 @@ web-vitals
     DB_PORT=
 
 5. Ejecuta la aplicación:
-   
  - Inicio del Frontend: "npm run start:frontend"
-
  - Inicio del Backend: "npm run start:backend"
-
  - Construcción de la Aplicación: "npm run build"
-
  - Ejecución de Pruebas: "npm test"
