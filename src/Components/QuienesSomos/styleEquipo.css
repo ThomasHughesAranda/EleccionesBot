@@ -1,0 +1,82 @@
+.EquipoDesarrollo {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+  }
+  
+  .EquipoDesarrollo h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold; 
+  }
+  
+  .EquipoDesarrollo .lead {
+    color: rgb(4, 77, 4);
+    font-weight: bold; 
+    font-size: 20px; 
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .EquipoDesarrollo h2 {
+      font-size: 22px;
+    }
+  
+    .EquipoDesarrollo .lead {
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .EquipoDesarrollo h2 {
+      font-size: 20px;
+    }
+  
+    .EquipoDesarrollo .lead {
+      font-size: 16px;
+    }
+  }
+  
+  /* estilo Contactanos*/
+
+  .Contactanos {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+  }
+  
+  .Contactanos h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold; 
+    color: rgb(56, 166, 240);
+  }
+  
+  .Contactanos .lead {
+    color: rgb(56, 166, 240);
+    font-weight: bold; 
+    font-size: 20px; 
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .Contactanos h2 {
+      font-size: 22px;
+    }
+  
+    .Contactanos .lead {
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .Contactanos h2 {
+      font-size: 20px;
+    }
+  
+    .Contactanos .lead {
+      font-size: 16px;
+    }
+  }

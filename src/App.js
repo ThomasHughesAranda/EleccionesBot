@@ -7,6 +7,7 @@ import ComoFunciona from './Components/Comofunciona/ComoFunciona';
 import Admin from './Components/Admin/Admin';
 import AdminProtectedRoutes from './Components/Auth0/AdminProtectedRoutes';
 import Inicio from './Components/Inicio/Inicio';
+import QuienesSomos from './Components/QuienesSomos/QuienesSomos';
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
            </AdminProtectedRoutes>
           }/>
           <Route path="/Inicio" element= {<Inicio/>} />
-          <Route path="/¿Como-funciona?" element= {<ComoFunciona/>} />  
+          <Route path="/¿Como-funciona?" element= {<ComoFunciona/>} /> 
+          <Route path="/¿Quienes-somos?" element= {<QuienesSomos/>} /> 
         </Routes>
       </BrowserRouter>
   );
