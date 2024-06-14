@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, InputGroup, Container, ListGroup, Card, Spinner } from 'react-bootstrap';
+import { Button, Form, InputGroup, Container, ListGroup, Card, Spinner,Row,Col } from 'react-bootstrap';
 import axios from 'axios';
 import './Chatbot.css';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -8,7 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 const Chatbot = () => {
 
     const [messages, setMessages] = useState([
-        { role: 'assistant', content: '¡Hola! Bienvenido a este espacio de información sobre el Plebiscito Constitucional en Chile. Estoy aquí para ayudarte a resolver tus dudas sobre la actual constitución y la propuesta de nueva constitución, así como sobre el proceso del plebiscito constitucional 2023.  ¿En qué puedo ayudarte hoy?' }
+        { role: 'assistant', content: '¡Hola! Bienvenido a este espacio de información sobre el Plebiscito Constitucional en Chile. Soy EleccionesBot y estoy aquí para ayudarte a resolver tus dudas sobre la actual constitución y la propuesta de nueva constitución, así como sobre el proceso del plebiscito constitucional 2023.  ¿En qué puedo ayudarte hoy?' }
     ]);
     const [threadId, setThreadId] = useState(null);
     const [loading, setLoading] = useState(false); 
@@ -104,7 +104,18 @@ const Chatbot = () => {
                         <ListGroup variant="flush">
                             {messages.map((message, index) => (
                                 <ListGroup.Item key={index} className={`list-group-item ${message.role}`}>
-                                    <strong>{message.role === 'user' ? 'Usuario:' : 'Asistente:'}</strong> {message.content}
+                                    {message.role === 'user' ? (                               
+                                        <> <strong>{user.name}:</strong> {message.content}</>      
+                                     ) : (
+                                        <Row className="botMessaje">
+                                        <Col xs="auto">
+                                            <img src="/Imagenes/Asistente.jpg" alt="Asistente" className="img-fluid" />
+                                        </Col>
+                                        <Col>
+                                            <p>{message.content}</p>
+                                        </Col>
+                                    </Row>
+                                    )}
                                 </ListGroup.Item>
                             ))}
                         </ListGroup>

@@ -29,7 +29,8 @@ const Navbar = () => {
 
   return (
     <BootstrapNavbar bg="light" expand="lg" className="custom-navbar">
-      <Container>
+      <Container className="contenedor">
+      <img src="/Imagenes/Asistente.jpg" alt="Asistente" className="img-fluid" />
         <BootstrapNavbar.Brand as={Link} to="/Inicio" className="brand">
           EleccionesBot
         </BootstrapNavbar.Brand>

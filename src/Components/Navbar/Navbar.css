@@ -22,6 +22,13 @@
     background-color: #036635; /* Color verde más oscuro al pasar el cursor */
     border-color: #036635   ;
   }
-
+  .contenedor img {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    border-radius: 30%;
+    object-fit: cover;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); 
   
+  }
   
