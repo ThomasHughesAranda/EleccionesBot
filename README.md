@@ -36,12 +36,14 @@ web-vitals
 
 4. Configuración de Credenciales y Variables de Entorno:**
 - OpenAI API:
-  - Crea una cuenta en OpenAI y obtén las credenciales de API necesarias.
+  - Crea una cuenta en OpenAI y obtén las credenciales de API (id de la openai key, id del assistente, id del vector de almacenimiento de datos).
   - Crea un archivo `.env` en la raíz del proyecto y añade las credenciales de OpenAI:
   
     OPENAI_API_KEY=
     
     ASSISTANT_ID=
+
+    VECTOR_ID=
 
 - Auth0:
   - Crea una cuenta en Auth0 para la autenticación.
