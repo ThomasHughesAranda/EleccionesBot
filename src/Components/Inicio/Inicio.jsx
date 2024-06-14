@@ -53,12 +53,12 @@ const { loginWithRedirect } = useAuth0();
         <p><Link as={Link} to="/¿Quienes-somos?" className="footer-link">¿Quiénes somos?</Link></p>
       </Col>
       <Col md={7}>
-        <h3>Contactanos</h3>
+        <h3>Contactos</h3>
         <p>Correo: eleccionesbot@gmail.com</p>
         <p>Teléfono: +56975287098</p>
       </Col>
     </Row> <div className="d-flex justify-content-center">
-        <p>&copy; 2024 EleccionesBot - Todos los derechos reservados.</p>
+        <h7> 2024 EleccionesBot Todos los derechos reservados.</h7>
     </div>
 
   </Container>

@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const { OpenAI } = require('openai');
-const { OPENAI_API_KEY, ASSISTANT_ID,RECT_APP_AUTH0_ADMIN_USER_ID } = process.env;
+const { OPENAI_API_KEY, ASSISTANT_ID,VECTOR_ID,RECT_APP_AUTH0_ADMIN_USER_ID } = process.env;
 const app = express();
 const pool = require('./db');
 
@@ -13,12 +13,22 @@ app.use(cors());
 // Configuración Api de OpenAI
 const openai = new OpenAI({
     apiKey: OPENAI_API_KEY,
+    defaultHeaders: {
+        'OpenAI-Beta': 'assistants=v2'
+    }
 });
+
 
 // Llamado a Asisstente de Api de OpenAI 
 const assistantId = ASSISTANT_ID;
 let pollingInterval;
 
+const vectorStore = await openai.beta.vectorStores.retrieve(VECTOR_ID);
+
+assistant= await openai.beta.assistants.update(assistantId {
+    tool_resources: { file_search: { vector_store_ids: [vectorStore.id] } },
+});
+  
 // funcion que crea de un thread o hilo
 async function createThread() {
     console.log('Creando un nuevo hilo...');
@@ -48,7 +58,6 @@ async function runAssistant(threadId) {
           assistant_id: assistantId,
         }
       );
-
     return response;
 }
 
