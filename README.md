@@ -1,26 +1,31 @@
 # EleccionesBot
-Es una aplicación diseñada para facilitar el acceso de información sobre procesos electorales mediante el uso de un bot.
+EleccionesBot es una aplicación diseñada como proyecto de título de la carrera de Ingeniería Ejecución en Informática de la Pontificia Universidad Católica de Valparaíso. Su propósito es proporcionar acceso fácil a información sobre procesos electorales mediante el uso de un bot. Utiliza la tecnologia de modelo de lenguaje grande basados en inteligencia artificial de OpenAI.
 
 ## Integrantes
 - Thomas Alonso Hughes Aranda
 - Sebastian Alexis Bahamondes Astorga
-
-## Tecnologías Utilizadas
-- React.js
-- React Router
-- React Bootstrap
-- Axios
-- Express.js
-- PostgreSQL
-- Auth0 para autenticación
-- Jest y Testing Library para pruebas
-- dotenv para la gestión de variables de entorno
-- nodemon para el reinicio automático del servidor en desarrollo
-- CORS para permitir solicitudes desde diferentes dominios
-- OpenAI para integración de funcionalidades de inteligencia artificial
-- Bootstrap para estilos
-- npm como gestor de paquetes
-- Web Vitals para medir el rendimiento web
+ 
+## Dependencias 
+@auth0/auth0-react
+@testing-library/jest-dom
+@testing-library/react
+@testing-library/user-event
+axios
+bootstrap
+cors
+dotenv
+express
+install
+nodemon
+npm
+openai
+pg
+react
+react-bootstrap
+react-data-table-component
+react-dom
+react-router-dom
+web-vitals
 
 ## Instalación
 1. Clona este repositorio con el comando "git clone https://github.com/ThomasHughesAranda/EleccionesBot" 
@@ -31,10 +36,14 @@ Es una aplicación diseñada para facilitar el acceso de información sobre proc
 
 4. Configuración de Credenciales y Variables de Entorno:**
 - OpenAI API:
-  - Crea una cuenta en OpenAI y obtén las credenciales de API necesarias.
+  - Crea una cuenta en OpenAI y obtén las credenciales de API (id de la openai key, id del assistente, id del vector de almacenimiento de datos).
   - Crea un archivo `.env` en la raíz del proyecto y añade las credenciales de OpenAI:
+  
     OPENAI_API_KEY=
+    
     ASSISTANT_ID=
+
+    VECTOR_ID=
 
 - Auth0:
   - Crea una cuenta en Auth0 para la autenticación.
@@ -47,8 +56,7 @@ Es una aplicación diseñada para facilitar el acceso de información sobre proc
 
 - Base de Datos PostgreSQL:
   - Asegúrate de tener PostgreSQL instalado y configurado en tu máquina o servidor.
-  - Crea una base de datos para el proyecto.
-  - Crea las tablas del proyecto con el script eleccionesBotBd.JS que esta en la carpeta del proyecto
+  - Crea las base de datos con el script eleccionesBotBd.JS que esta en la carpeta del proyecto
   - Añade las credenciales de la base de datos en el archivo `.env`:
 
 
@@ -63,11 +71,7 @@ Es una aplicación diseñada para facilitar el acceso de información sobre proc
     DB_PORT=
 
 5. Ejecuta la aplicación:
-   
-npm run start:frontend
-
-npm run start:backend
-
-npm run build
-
-npm test
+- Inicio del Frontend: "npm run start:frontend"
+- Inicio del Backend: "npm run start:backend"
+- Construcción de la Aplicación: "npm run build"
+- Ejecución de Pruebas: "npm test"
