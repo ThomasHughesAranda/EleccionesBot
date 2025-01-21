@@ -1,5 +1,5 @@
-# EleccionesBot
-EleccionesBot es una aplicación diseñada como proyecto de título de la carrera de Ingeniería Ejecución en Informática de la Pontificia Universidad Católica de Valparaíso. Su propósito es proporcionar acceso fácil a información sobre procesos electorales mediante el uso de un bot. Utiliza la tecnologia de modelo de lenguaje grande basados en inteligencia artificial de OpenAI.
+# Proyecto de título 
+Aplicación diseñada como proyecto de título de la carrera de Ingeniería Ejecución en Informática de la Pontificia Universidad Católica de Valparaíso. Su propósito es proporcionar acceso fácil a información sobre procesos electorales mediante el uso de un bot. Utiliza la tecnologia de modelo de lenguaje grande basados en inteligencia artificial de OpenAI.
 
 ## Integrantes
 - Thomas Alonso Hughes Aranda
